@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block head %} 
+
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/menu.css') }}">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+{% endblock %}
+
+{% block body %} 
+
+<h1> FLIGHT DETAILS </h1>
+    <table>
+
+        <th> Flight ID </th>
+        <th> Airline ID </th>
+        <th> Airline Name </th>
+        <th> From Location </th>
+        <th> To Location </th>
+        <th> Departire Time </th>
+        <th> Arrival Time </th>
+        <th> Duration </th>
+        <th> Total Seats </th>
+        <th> Booked Seats </th>
+        <th> Status </th>
+
+        {% for value in values %}
+
+
+
+                <tr>
+                    <td> {{value.Flight_ID}} </td>
+                    <td> {{value.Airline_ID}} </td>
+                    <td> {{value.AirlineName}} </td>
+                    <td> {{value.From_location}} </td>
+                    <td> {{value.To_location}} </td>
+                    <td> {{value.Departure_time}} </td>
+                    <td> {{value.Arrival_time}} </td>
+                    <td> {{value.Duration}} </td>
+                    <td> {{value.Total_seats}} </td>
+                    <td> {{value.Booked_seats}} </td>
+                    <td> {{value.Status}} </td>
+                </tr> 
+
+        {% endfor %}
+    </table>
+{% endblock %}

@@ -1,0 +1,134 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+<title>Edit Profile</title>
+
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/menu.css') }}">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+{% endblock %}
+
+
+{% block body %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <ul class="nav nav-pills nav-stacked">
+                <li class="inactive"><a href="passenger_dashboard"><i class="fa fa-home fa-fw"></i>Home</a></li>
+                <li class="inactive"><a href="view_flights_passenger"><i class="fa fa-list-alt fa-fw"></i>View Flights</a></li>
+                <li class="inactive"><a href="search_flight"><i class="fa fa-file-o fa-fw"></i>Search Flights</a></li>
+                <li class="inactive"><a href="book_ticket"><i class="fa fa-bar-chart-o fa-fw"></i>Book Ticket</a></li>
+                <li class="inactive"><a href="cancel_ticket"><i class="fa fa-table fa-fw"></i>Cancel Ticket</a></li>
+                <li class="active"><a href=""><i class="fa fa-tasks fa-fw"></i>Edit Profile</a></li>
+                <li class="inactive"><a href="change_passenger_password"><i class="fa fa-calendar fa-fw"></i>Change Password</a></li>
+                <li class="inactive"><a href="logout"><i class="fa fa-book fa-fw"></i>Logout</a></li>
+            </ul>
+        </div>
+        <div class="col-md-9 well">
+            Edit Profile
+        </div>
+
+        <form action="complete_edit_passenger_profile" method="POST">
+        <div class="col-md-9 well">
+
+            <div class="form-group">
+                <input type="email" name="emailaddress" class="form-control" placeholder="Your Email *" value={{passenger.EmailAddress }} readonly />
+            </div>
+
+            <div class="form-group">
+                <input type="text" name="firstname" class="form-control" placeholder="First Name *" value={{passenger.FirstName}} />
+            </div>
+            <div class="form-group">
+                <input type="text" name="lastname" class="form-control" placeholder="Last Name *" value={{passenger.LastName}} />
+            </div>
+
+            <div class="form-group">
+                <input type="text" minlength="10" maxlength="10" name="phonenumber" class="form-control" placeholder="Your Phone *" value={{passenger.ContactNumber}} />
+            </div>
+
+            <div class="form-group">
+                <input type="text" name="nic" class="form-control" placeholder="National ID *" value={{passenger.NationalID}} />
+            </div>
+
+            <div class="form-group">
+                <input type="text" name="passport" class="form-control" placeholder="Passport ID *" value={{passenger.Passport}} />
+            </div>
+
+
+            <div class="form-group">
+                <label><b>Date of Birth</b></label>
+                <input type="date" name="dob" class="form-control"  value={{passenger.DateOfBirth}} />
+            </div>
+            
+            {% if passenger["Gender"] == "male" %}
+                <div class="form-group">
+                    <div class="maxl">
+                        <p>Gender:</p>
+                        <label class="radio inline"> 
+                            <input type="radio" name="gender" value="male" checked>
+                            <span> Male </span> 
+                        </label>
+                        <label class="radio inline"> 
+                            <input type="radio" name="gender" value="female">
+                            <span>Female </span> 
+                        </label>
+                        <label class="radio inline"> 
+                            <input type="radio" name="gender" value="other">
+                            <span>Other </span> 
+                        </label>
+                    </div>
+                </div>
+            {% endif %}
+
+            {% if passenger["Gender"] == "female" %}
+                <div class="form-group">
+                    <div class="maxl">
+                        <p>Gender:</p>
+                        <label class="radio inline"> 
+                            <input type="radio" name="gender" value="male">
+                            <span> Male </span> 
+                        </label>
+                        <label class="radio inline"> 
+                            <input type="radio" name="gender" value="female" checked>
+                            <span>Female </span> 
+                        </label>
+                        <label class="radio inline"> 
+                            <input type="radio" name="gender" value="other">
+                            <span>Other </span> 
+                        </label>
+                    </div>
+                </div>
+            {% endif %}
+
+            {% if passenger["Gender"] == "other" %}
+                <div class="form-group">
+                    <div class="maxl">
+                        <p>Gender:</p>
+                        <label class="radio inline"> 
+                            <input type="radio" name="gender" value="male" checked>
+                            <span> Male </span> 
+                        </label>
+                        <label class="radio inline"> 
+                            <input type="radio" name="gender" value="female">
+                            <span>Female </span> 
+                        </label>
+                        <label class="radio inline"> 
+                            <input type="radio" name="gender" value="other" checked>
+                            <span>Other </span> 
+                        </label>
+                    </div>
+                </div>
+            {% endif %}
+
+            <input type="submit" class="btnAddFlight"  value="Update Profile"/>
+
+        </div>
+    </form>
+    </div>
+</div>
+
+{% endblock %}

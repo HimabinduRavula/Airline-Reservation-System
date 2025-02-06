@@ -1,0 +1,125 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+<title>Booking Details</title>
+
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/menu.css') }}">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+{% endblock %}
+
+
+{% block body %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <ul class="nav nav-pills nav-stacked">
+                <li class="inactive"><a href="passenger_dashboard"><i class="fa fa-home fa-fw"></i>Home</a></li>
+                <li class="inactive"><a href="view_flights_passenger"><i class="fa fa-list-alt fa-fw"></i>View Flights</a></li>
+                <li class="inactive"><a href="search_flight"><i class="fa fa-file-o fa-fw"></i>Search Flights</a></li>
+                <li class="active"><a href="book_ticket"><i class="fa fa-bar-chart-o fa-fw"></i>Book Ticket</a></li>
+                <li class="inactive"><a href="cancel_ticket"><i class="fa fa-table fa-fw"></i>Cancel Ticket</a></li>
+                <li class="inactive"><a href="edit_profile"><i class="fa fa-tasks fa-fw"></i>Edit Profile</a></li>
+                <li class="inactive"><a href="change_passenger_password"><i class="fa fa-calendar fa-fw"></i>Change Password</a></li>
+                <li class="inactive"><a href="logout"><i class="fa fa-book fa-fw"></i>Logout</a></li>
+            </ul>
+        </div>
+        <div class="col-md-9 well">
+            Booking Details
+        </div>
+
+        <div class="col-md-9 well">
+            <h1> FLIGHT DETAILS </h1>
+    <table>
+
+        <th> Flight ID </th>
+        <th> Airline ID </th>
+        <th> Airline Name </th>
+        <th> From Location </th>
+        <th> To Location </th>
+        <th> Departire Time </th>
+        <th> Arrival Time </th>
+        <th> Duration </th>
+        <th> Total Seats </th>
+        <th> Booked Seats </th>
+
+        <tr>
+            <td> {{flight.Flight_ID}} </td>
+            <td> {{flight.Airline_ID}} </td>
+            <td> {{flight.AirlineName}} </td>
+            <td> {{flight.From_location}} </td>
+            <td> {{flight.To_location}} </td>
+            <td> {{flight.Departure_time}} </td>
+            <td> {{flight.Arrival_time}} </td>
+            <td> {{flight.Duration}} </td>
+            <td> {{flight.Total_seats}} </td>
+            <td> {{flight.Booked_seats}} </td>
+        </tr> 
+    </table>
+
+            <h3>Ticket Number: {{ ticket_id }}</h3>
+
+            <h3 id="price">Price: $ {{ price }} </h3>
+
+            <h3>Payment ID: {{ payment_id }}</h3>
+
+            <form action="/confirm_booking" class = "register-form" method="post">
+
+                    <div class="form-group">
+                        <input type="hidden" class="form-control" value={{passenger.EmailAddress}} name="emailaddress" />
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="hidden" class="form-control" value={{flight.Flight_ID}} name="flightid"/>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="hidden" class="form-control" value={{ticket_id}} name="ticket_id" />
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="hidden" class="form-control" value={{price}} name="price"/>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="hidden" class="form-control" value={{payment_id}} name="payment_id"/>
+                    </div>
+
+                    <h4><b>Payment Details</b></h4>
+
+                    <div class="form-group">
+                        <div class="maxl">
+                            <label class="radio inline"> 
+                                <input type="radio" name="paymentmethod" value="creditcard" checked>
+                                <span> Credit Card (20% off) </span> 
+                            </label>
+                            <label class="radio inline"> 
+                                <input type="radio" name="paymentmethod" value="ibft">
+                                <span> IBFT (15% off) </span> 
+                            </label>
+                            <label class="radio inline"> 
+                                <input type="radio" name="paymentmethod" value="cash">
+                                <span> Cash (Full price) </span> 
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" class="form-control" value="" name="transactionid" placeholder="Transaction ID" required />
+                    </div>
+
+
+
+                    <input type="submit" class="btnAddFlight"  value="Proceed" />
+
+            </form> 
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}

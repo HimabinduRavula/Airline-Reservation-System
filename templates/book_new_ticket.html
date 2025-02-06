@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+<title>Book New Ticket</title>
+
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/menu.css') }}">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+{% endblock %}
+
+
+{% block body %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <ul class="nav nav-pills nav-stacked">
+                <li class="inactive"><a href="passenger_dashboard"><i class="fa fa-home fa-fw"></i>Home</a></li>
+                <li class="inactive"><a href="view_flights_passenger"><i class="fa fa-list-alt fa-fw"></i>View Flights</a></li>
+                <li class="inactive"><a href="search_flight"><i class="fa fa-file-o fa-fw"></i>Search Flights</a></li>
+                <li class="active"><a href="book_ticket"><i class="fa fa-bar-chart-o fa-fw"></i>Book Ticket</a></li>
+                <li class="inactive"><a href="cancel_ticket"><i class="fa fa-table fa-fw"></i>Cancel Ticket</a></li>
+                <li class="inactive"><a href="edit_passenger_profile"><i class="fa fa-tasks fa-fw"></i>Edit Profile</a></li>
+                <li class="inactive"><a href="change_passenger_password"><i class="fa fa-calendar fa-fw"></i>Change Password</a></li>
+                <li class="inactive"><a href="logout"><i class="fa fa-book fa-fw"></i>Logout</a></li>
+            </ul>
+        </div>
+        <div class="col-md-9 well">
+            Book New Ticket
+        </div>
+
+        <form action="book_ticket" method="POST">
+        <div class="col-md-9 well">
+            <div class="form-group">
+                <input type="text" name="flightid" class="form-control"  placeholder="Flight ID *" value="" />
+            </div>
+            
+            <input type="submit" class="btnAddFlight"  value="Book Ticket"/>
+
+        </div>
+    </form>
+    </div>
+</div>
+
+{% endblock %}

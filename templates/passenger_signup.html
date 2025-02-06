@@ -1,0 +1,117 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/forms.css') }}">
+
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+{% endblock %}
+
+
+{% block body %}
+
+
+<div class="container register">
+    <div class="row">
+
+        <div class="col-md-3 register-left">
+            
+            <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt=""/>
+            <h3>Welcome</h3>
+            <p>The best service provider for domestic and international travel</p>
+            
+            <form action="/passenger_signin" class="register-left">
+                <input type="submit" name="" value="Login"/><br/>
+            </form>
+            <a href="guest_view">Continue as Guest</a>
+
+        </div>
+
+        <div class="col-md-9 register-right">
+            <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#" role="tab" aria-controls="home" aria-selected="true">Passenger</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="/admin_signup" role="tab" aria-controls="profile" aria-selected="false">Admin</a>
+                </li>
+            </ul>
+
+            <form action="/compelete_passenger_signup" class = "register-form" method="post">
+
+                <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                    <h3 class="register-heading">Register Passenger</h3>
+                    <div class="row register-form">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="text" name="firstname" class="form-control" placeholder="First Name *" value=""/>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="lastname" class="form-control" placeholder="Last Name *" value="" />
+                            </div>
+                            <div class="form-group">
+                                <input type="password" name="password" class="form-control" placeholder="Password *" value="" />
+                            </div>
+                            <div class="form-group">
+                                <input type="password" name="confirmpassword" class="form-control"  placeholder="Confirm Password *" value="" />
+                            </div>
+                            <div class="form-group">
+                                <div class="maxl">
+                                    <label class="radio inline"> 
+                                        <input type="radio" name="gender" value="male" checked>
+                                        <span> Male </span> 
+                                    </label>
+                                    <label class="radio inline"> 
+                                        <input type="radio" name="gender" value="female">
+                                        <span>Female </span> 
+                                    </label>
+                                    <label class="radio inline"> 
+                                        <input type="radio" name="gender" value="other">
+                                        <span>Other </span> 
+                                    </label>
+                                </div>
+                            </div>
+                            <ul class={{ color }}> 
+
+                                {% for error in errors %}
+                                <li> {{error}}</li>
+                                {% endfor %}
+
+                            </ul>
+                            <input type="submit" class="btnRegister"  value="Register"/>
+
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="email" name="emailaddress" class="form-control" placeholder="Your Email *" value="" />
+                            </div>
+                            <div class="form-group">
+                                <input type="text" minlength="10" maxlength="10" name="phonenumber" class="form-control" placeholder="Your Phone *" value="" />
+                            </div>
+                            <div class="form-group">
+                                <label>Date of Birth</label>
+                                <input type="date" name="dob" class="form-control"  value="" />
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="passport" class="form-control" placeholder="Passport *" value="" />
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="nic" class="form-control" placeholder="National ID *" value="" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </form> 
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+{% endblock %}

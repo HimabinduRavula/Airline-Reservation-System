@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block head %} 
+
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/menu.css') }}">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+{% endblock %}
+
+{% block body %} 
+
+<div class="centered_heading">
+    
+    <h1> {{ msg }}</h1>
+    </br>
+    </br>
+    <a href="passenger_signup" class="link2" />Continue</a>
+
+</div>
+
+{% endblock %}

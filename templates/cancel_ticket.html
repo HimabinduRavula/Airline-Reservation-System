@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+<title>Booking Details</title>
+
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/menu.css') }}">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+{% endblock %}
+
+
+{% block body %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <ul class="nav nav-pills nav-stacked">
+                <li class="inactive"><a href="passenger_dashboard"><i class="fa fa-home fa-fw"></i>Home</a></li>
+                <li class="inactive"><a href="view_flights_passenger"><i class="fa fa-list-alt fa-fw"></i>View Flights</a></li>
+                <li class="inactive"><a href="search_flight"><i class="fa fa-file-o fa-fw"></i>Search Flights</a></li>
+                <li class="inactive"><a href="book_ticket"><i class="fa fa-bar-chart-o fa-fw"></i>Book Ticket</a></li>
+                <li class="active"><a href=""><i class="fa fa-table fa-fw"></i>Cancel Ticket</a></li>
+                <li class="inactive"><a href="edit_passenger_profile"><i class="fa fa-tasks fa-fw"></i>Edit Profile</a></li>
+                <li class="inactive"><a href="change_passenger_password"><i class="fa fa-calendar fa-fw"></i>Change Password</a></li>
+                <li class="inactive"><a href="logout"><i class="fa fa-book fa-fw"></i>Logout</a></li>            </ul>
+            </ul>
+        </div>
+        <div class="col-md-9 well">
+            Booked Flights
+        </div>
+
+        <div class="col-md-9 well">
+            <h1> BOOKING DETAILS </h1>
+    <table>
+
+        <th> Booking ID </th>
+        <th> Flight ID </th>
+        <th> Booking Time </th>
+        <th> Ticket ID </th>
+        <th> Payment ID </th>
+        <th> Ticket Price </th>
+        <th> Action </th>
+
+        {% for booking in bookings %}
+
+                <tr>
+                    <td> {{booking.Booking_ID}} </td>
+                    <td> 
+                        <form action="flight_results" method="POST">
+                        
+                            <input type="hidden" name="flightid" class="form-control"  value={{booking.Flight_ID}} />
+                            <input type="submit" class="link3"  value={{booking.Flight_ID}} />
+                        
+                        </form>
+                        
+                    </td>
+                    <td> {{booking.Booking_Date}} </td>
+                    <td> {{booking.Ticket_ID}} </td>
+                    <td> {{booking.Payment_ID}} </td>
+                    <td> $ {{booking.Ticket_Price}} </td>
+                    <td>
+                        <form action="complete_ticket_cancelation" method="POST">
+                            <input type="hidden" name="bookingid" class="form-control"  value={{booking.Booking_ID}} />
+                            <input type="submit" class="link3"  value="Cancel" />                            
+                        </form>
+                    </td>
+                </tr> 
+
+        {% endfor %}
+
+        <tr> <td colspan="7"> &ensp; {{message}} </td></tr>
+
+    </table>
+
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}

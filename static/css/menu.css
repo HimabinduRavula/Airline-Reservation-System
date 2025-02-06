@@ -1,0 +1,119 @@
+@import url(http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css);
+body{margin-top:20px;}
+.fa-fw {width: 2em;}
+
+.inactive{background-color: rgb(211, 204, 204);}
+
+.btnRegister{
+    float: right;
+    margin-top: 10%;
+    border: none;
+    border-radius: 1.5rem;
+    padding: 2%;
+    background: #0062cc;
+    color: #fff;
+    font-weight: 600;
+    width: 50%;
+    cursor: pointer;
+}
+
+.btnAddFlight{
+    float: none;
+    clear: both;
+    margin-top: 0%;
+    border: none;
+    border-radius: 1.5rem;
+    padding: 2%;
+    background: #0062cc;
+    color: #fff;
+    font-weight: 600;
+    width: 50%;
+    cursor: pointer;
+}
+
+.link{
+
+    float: none;
+    clear: both;
+    margin-top: 10%;
+    border: none;
+    border-radius: 1.5rem;
+    padding: 1%;
+    background: #0062cc;
+    color: #fff;
+    font-weight: 600;
+    width: 10vmin;
+    cursor: pointer;
+    margin-left: 2%;
+}
+
+.link2{
+
+    float: none;
+    clear: both;
+    margin-top: 20%;
+    border: none;
+    border-radius: 1.5rem;
+    padding: 1%;
+    background: #0062cc;
+    color: #fff;
+    font-weight: 600;
+    width: 10vmin;
+    cursor: pointer;
+    margin-left: 0%;
+
+}
+
+.link3{
+
+    border-radius: 1.5rem;
+    background: #0062cc;
+    color: #fff;
+    font-weight: 600;
+    width: 10vmin;
+    cursor: pointer;
+    margin-right: 1%;
+}
+
+.white{
+
+    color: #fff;
+
+}
+
+table{
+
+    margin-left: 10px;
+
+}
+
+th{
+
+    padding-left: 20px;
+
+    color:rgb(211, 204, 204);
+    padding-bottom: 2%;
+    background-color: rgb(83, 97, 6);
+
+}
+
+td{
+
+    padding-left: 20px;
+
+    color:rgb(211, 204, 204);
+    background-color: #60980c;
+    margin:auto;
+}
+
+.green-text{
+
+    color: rgb(27, 244, 27);
+
+}
+
+.red-text{
+
+    color: rgb(244, 27, 27);
+
+}

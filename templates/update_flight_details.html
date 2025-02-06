@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+<title>Admin Dashboard</title>
+
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/menu.css') }}">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+{% endblock %}
+
+
+{% block body %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <ul class="nav nav-pills nav-stacked">
+                <li class="inactive"><a href="admin_dashboard"><i class="fa fa-home fa-fw"></i>Home</a></li>
+                <li class="active"><a href=""><i class="fa fa-list-alt fa-fw"></i>Add Flights</a></li>
+                <li class="inactive"><a href="update_flight"><i class="fa fa-file-o fa-fw"></i>Update Flights</a></li>
+                <li class="inactive"><a href="remove_flight"><i class="fa fa-bar-chart-o fa-fw"></i>Remove Flights</a></li>
+                <li class="inactive"><a href="cancel_flight"><i class="fa fa-table fa-fw"></i>Cancel Flights</a></li>
+                <li class="inactive"><a href="view_flights"><i class="fa fa-tasks fa-fw"></i>View Flights</a></li>
+                <li class="inactive"><a href="edit_admin_profile"><i class="fa fa-calendar fa-fw"></i>Edit Profile</a></li>
+                <li class="inactive"><a href="logout"><i class="fa fa-book fa-fw"></i>Logout</a></li>
+            </ul>
+        </div>
+        <div class="col-md-9 well">
+            Update Flight Details
+        </div>
+
+        <form action="complete_update_flight" method="POST">
+        <div class="col-md-9 well">
+            <div class="form-group">
+                <input type="text" name="flightid" class="form-control"  placeholder="Flight ID *" value={{flight.Flight_ID}} readonly />
+            </div>
+            <div class="form-group">
+                <input type="text" name="airlineid" class="form-control"  placeholder="Airline ID *" value={{flight.Airline_ID}} />
+            </div>
+            <div class="form-group">
+                <input type="text" name="airlinename" class="form-control"  placeholder="Airline Name *" value={{flight.AirlineName}} />
+            </div>
+            <div class="form-group">
+                <input type="text" name="fromlocation" class="form-control"  placeholder="From Location *" value={{flight.From_location}} />
+            </div>
+            <div class="form-group">
+                <input type="text" name="tolocation" class="form-control"  placeholder="To Location *" value={{flight.To_location}} />
+            </div>
+
+            <div class="form-group">
+                <p><b>Departure Date</b></p>
+                <input type="date" name="departuredate" class="form-control"  placeholder="Departure Date *" value={{flight.Departure_date}} />
+            </div>
+            <div class="form-group">
+                <p><b>Arrival Date</b></p>
+                <input type="date" name="arrivaldate" class="form-control"  placeholder="Arrival Date *" value={{flight.Arrival_date}} />
+            </div>
+
+            <div class="form-group">
+                <p><b>Departure Time</b></p>
+                <input type="time" name="departuretime" class="form-control"  placeholder="Departure Time *" value={{flight.Departure_time}} />
+            </div>
+            <div class="form-group">
+                <p><b>Arrival Time</b></p>
+                <input type="time" name="arrivaltime" class="form-control"  placeholder="Arrival Time *" value={{flight.Arrival_time}} />
+            </div>
+            <div class="form-group">
+                <input type="text" name="duration" class="form-control"  placeholder="Flight Duration *" value={{flight.Duration}} />
+            </div>
+            <div class="form-group">
+                <input type="text" name="totalseats" class="form-control"  placeholder="Total Seats *" value={{flight.Total_seats}} />
+            </div>
+            <input type="submit" class="btnAddFlight"  value="Update Flight"/>
+
+        </div>
+    </form>
+    </div>
+</div>
+
+{% endblock %}
